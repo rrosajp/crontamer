@@ -2,10 +2,21 @@
 A wrapper script for cron to stop multiple process instances starting. Also times out after 12 hours (default)
 and emails on error.
 
-Installation.
+## Installation
 This is simple python script, put it somewhere in your path.
 
-Usage
+For system-wide installation (or if you are using a virtual env), you can 
+use `pip install .` after `cd` to this directory.  You may wish to first
+install pip and the Python package dependencies via your package manager, 
+and also to create a symlink in `/usr/bin` where it will be in the `PATH`
+used by cron jobs, e.g.:
+```
+yum install python3-pip python3-psutil python3-docopt
+pip install .
+ln -s /usr/local/bin/crontamer /usr/bin
+```
+
+## Usage
 Usage: crontamer.py [options] 'my_script -opt1 -opt2 arg1 arg2'
 
 Wrapper script for cron jobs enabling locking, timeouts and email of failures.
